@@ -15,15 +15,15 @@ public class AnyDao {
 	}
 
 	public List<AnyEntity> selectAll() {
-		List<AnyEntity> list = null;
+		List<AnyEntity> anyEntities = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		try {// A try block can be followed by finally. 
-			list = session.selectList("anyNameSpace.selectAll");// Refer to <mapper namespace="anyNameSpace"> in AnyEntity.xml
-		} finally {
+			anyEntities = session.selectList("anyNameSpace.selectAll");// Refer to <mapper namespace="anyNameSpace"> in anyEntity.xml
+		} finally {// Finally is used for closing the resources.
 			session.close();
 		}
-		System.out.println("selectAll() --> " + list);
-		return list;
+		System.out.println("selectAll() --> " + anyEntities);
+		return anyEntities;
 	}
 
 	public AnyEntity selectById(int id) {
