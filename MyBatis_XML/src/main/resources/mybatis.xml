@@ -5,6 +5,10 @@
 <configuration>
 	<!-- Get the properties file from the resource folder. -->
 	<properties resource="anyProperties.properties"/>
+	<!-- Enable underscore to camel case mapping. -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
 	<!-- Map evolution.entity.AnyEntity as AnyEntity and use it as alias. -->
 	<typeAliases>
 		<typeAlias alias="AnyEntity" type="evolution.entity.AnyEntity" />
