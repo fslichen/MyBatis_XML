@@ -3,34 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="anyNameSpace">
+<mapper namespace="evolution.dao.AnotherDao">
     <!-- See typeAliases in mybatis.xml -->
-    <resultMap id="result" type="AnyEntity">
+    <resultMap id="result" type="AnotherEntity">
         <result property="id" column="id"/>
         <result property="name" column="name"/>   
     </resultMap>
  	
- 	<!-- See selectAll() in AnyDao. -->
     <select id="selectAll" resultMap="result">
-        SELECT * FROM any_entity;
+        SELECT * FROM another_entity;
     </select>
  
- 	<!-- See selectById(int id) in AnyDao. -->
     <select id="selectById" parameterType="int" resultMap="result">
-        SELECT * FROM any_entity WHERE id = #{id}
+        SELECT * FROM another_entity WHERE id = #{id}
     </select>
  
-    <insert id="insert" parameterType="AnyEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO any_entity (name) VALUES (#{name});
+    <insert id="insert" parameterType="AnotherEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO another_entity (name) VALUES (#{name});
     </insert>
 	
-    <update id="update" parameterType="AnyEntity">
-        UPDATE any_entity
+    <update id="update" parameterType="AnotherEntity">
+        UPDATE another_entity
         SET name = #{name}
         WHERE id = #{id} 
     </update>
  	
     <delete id="delete" parameterType="int">
-        DELETE from any_entity WHERE id = #{id}
+        DELETE from another_entity WHERE id = #{id}
     </delete>
 </mapper>

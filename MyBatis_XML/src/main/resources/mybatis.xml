@@ -2,30 +2,32 @@
 <!DOCTYPE configuration
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
 <configuration>
+	<!-- Get the properties file from the resource folder. -->
+	<properties resource="anyProperties.properties"/>
 	<!-- Map evolution.entity.AnyEntity as AnyEntity and use it as alias. -->
 	<typeAliases>
 		<typeAlias alias="AnyEntity" type="evolution.entity.AnyEntity" />
+		<typeAlias alias="AnotherEntity" type="evolution.entity.AnotherEntity" />
 	</typeAliases>
 	<!-- You are allowed to set the profiles for DB connection. -->
-	<!-- In this case, you set the development profile as the default profile.  -->
+	<!-- In this case, you set the development profile as the default profile. -->
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<!-- Create a database named test. -->
-				<property name="url" value="jdbc:mysql://localhost:3306/test" />
-				<property name="username" value="root" />
-				<property name="password" value="root" />
+				<!-- It is advisable to put properties in the properties file. ${} is used for extracting the properties. -->
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
 			</dataSource>
 		</environment>
 		<environment id="production">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
+				<!-- You can also write the properties directly inside the values. -->
 				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<!-- Create a database named test. -->
 				<property name="url" value="jdbc:mysql://localhost:3306/production" />
 				<property name="username" value="root" />
 				<property name="password" value="root" />
@@ -34,5 +36,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="anyEntity.xml" />
+		<mapper resource="anotherEntity.xml" />
 	</mappers>
 </configuration>

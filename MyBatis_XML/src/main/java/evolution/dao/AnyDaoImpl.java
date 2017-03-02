@@ -7,10 +7,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import evolution.entity.AnyEntity;
 
-public class AnyDao {
+public class AnyDaoImpl {
 	private SqlSessionFactory sqlSessionFactory = null;
 
-	public AnyDao(SqlSessionFactory sqlSessionFactory) {
+	public AnyDaoImpl(SqlSessionFactory sqlSessionFactory) {
 		this.sqlSessionFactory = sqlSessionFactory;
 	}
 

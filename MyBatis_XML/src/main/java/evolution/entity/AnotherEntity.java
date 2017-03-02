@@ -5,11 +5,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class AnyEntity {
-    private int id;
-    private String name;
-    
-	public AnyEntity(String name) {
+public class AnotherEntity {
+	private int id;
+	private String name;
+	
+	public AnotherEntity(String name) {
 		this.name = name;
 	}
 }
