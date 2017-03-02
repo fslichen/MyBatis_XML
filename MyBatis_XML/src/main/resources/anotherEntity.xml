@@ -10,6 +10,7 @@
         <result property="name" column="name"/>   
     </resultMap>
  	
+ 	<!-- The ID selectAll corresponds to selectAll() in AnotherDao. -->
     <select id="selectAll" resultMap="result">
         SELECT * FROM another_entity;
     </select>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="evolution.dao.TheOtherDao">
+    <!-- See typeAliases in mybatis.xml -->
+    <resultMap id="result" type="TheOtherEntity">
+        <result property="id" column="id" />
+        <result property="name" column="name" />  
+        <result property="age" column="age" />  
+        <result property="address" column="address" /> 
+    </resultMap>
+
+	<!-- selectByNameAndAge corresponds to selectByNameAndAge() in TheOtherDao. -->
+	<!-- #{name} corresponds to @Param("name"). -->
+    <select id="selectByNameAndAge" parameterType="TheOtherEntity" resultMap="result">
+        SELECT * FROM the_other_entity WHERE name = #{name} and age = #{age};
+    </select>
+
+	<!-- #{name} corresponds to the name field in TheOtherEntity pojo. -->
+	<select id="selectByPojo" parameterType="TheOtherEntity" resultMap="result">
+        SELECT * FROM the_other_entity WHERE name = #{name} and age = #{age};
+    </select>
+
+    <insert id="insert" parameterType="TheOtherEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO the_other_entity(name, age, address) VALUES (#{name}, #{age}, #{address});
+    </insert>
+</mapper>

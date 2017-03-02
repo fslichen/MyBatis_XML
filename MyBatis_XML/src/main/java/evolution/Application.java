@@ -7,8 +7,10 @@ import org.junit.Test;
 
 import evolution.dao.AnotherDao;
 import evolution.dao.AnyDaoImpl;
+import evolution.dao.TheOtherDao;
 import evolution.entity.AnotherEntity;
 import evolution.entity.AnyEntity;
+import evolution.entity.TheOtherEntity;
 import evolution.service.AnyService;
  
 public class Application {
@@ -47,5 +49,22 @@ public class Application {
 		List<AnotherEntity> anotherEntities = anotherDao.selectAll();
 		System.out.println(anotherEntities);
 		session.commit();
+	}
+	
+	@Test
+	public void testParameterInjection() {
+		// Get session.
+		SqlSession session = AnyService.getSqlSessionFactory().openSession();
+		TheOtherDao theOtherDao = session.getMapper(TheOtherDao.class);
+		// Insert
+		TheOtherEntity theOtherEntity = new TheOtherEntity("Chen", 27, "Illinois");
+		theOtherDao.insert(theOtherEntity);
+		session.commit();
+		// Select by name and age.
+		List<TheOtherEntity> theOtherEntities = theOtherDao.selectByNameAndAge("Chen", 27);
+		System.out.println(theOtherEntities);
+		// Select by pojo.
+		theOtherEntities = theOtherDao.selectByPojo(theOtherEntity);
+		System.out.println(theOtherEntities);
 	}
 }

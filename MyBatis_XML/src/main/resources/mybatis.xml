@@ -13,6 +13,7 @@
 	<typeAliases>
 		<typeAlias alias="AnyEntity" type="evolution.entity.AnyEntity" />
 		<typeAlias alias="AnotherEntity" type="evolution.entity.AnotherEntity" />
+		<typeAlias alias="TheOtherEntity" type="evolution.entity.TheOtherEntity" />
 	</typeAliases>
 	<!-- You are allowed to set the profiles for DB connection. -->
 	<!-- In this case, you set the development profile as the default profile. -->
@@ -41,5 +42,6 @@
 	<mappers>
 		<mapper resource="anyEntity.xml" />
 		<mapper resource="anotherEntity.xml" />
+		<mapper resource="theOtherEntity.xml" />
 	</mappers>
 </configuration>
