@@ -23,6 +23,10 @@
         SELECT * FROM the_other_entity WHERE name = #{name} and age = #{age};
     </select>
 
+    <select id="selectByMap" parameterType="TheOtherEntity" resultMap="result">
+        SELECT * FROM the_other_entity WHERE name = #{name} and age = #{age} and address = #{address};
+    </select>
+
     <insert id="insert" parameterType="TheOtherEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO the_other_entity(name, age, address) VALUES (#{name}, #{age}, #{address});
     </insert>

@@ -1,6 +1,8 @@
 package evolution;
  
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -65,6 +67,13 @@ public class Application {
 		System.out.println(theOtherEntities);
 		// Select by pojo.
 		theOtherEntities = theOtherDao.selectByPojo(theOtherEntity);
+		System.out.println(theOtherEntities);
+		// Select by map.
+		Map<String, Object> queryMap = new LinkedHashMap<>();
+		queryMap.put("name", "Chen");
+		queryMap.put("age", 27);
+		queryMap.put("address", "Illinois");
+		theOtherEntities = theOtherDao.selectByMap(queryMap);
 		System.out.println(theOtherEntities);
 	}
 }
