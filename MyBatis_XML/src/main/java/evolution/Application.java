@@ -31,7 +31,7 @@ public class Application {
     }
 
 	@Test
-	public void testAutoProxy() {
+	public void testAutoProxy() {// This method is recommended by MyBatis team.
 		// Get session.
 		SqlSession session = AnyService.getSqlSessionFactory().openSession();
 		AnotherDao anotherDao = session.getMapper(AnotherDao.class);
