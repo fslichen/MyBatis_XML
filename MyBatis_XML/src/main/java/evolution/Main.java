@@ -10,9 +10,9 @@ public class Main {
     public static void main(String args[]){
         AnyDao anyDao = new AnyDao(AnyService.getSqlSessionFactory());
         AnyEntity anyEntity = new AnyEntity();
-        anyEntity.setName("Entity 1");
+        anyEntity.setName("Entity Name 0");
         anyDao.insert(anyEntity);
-        anyEntity.setName("Entity 2"); 
+        anyEntity.setName("Entity Name 1"); 
         int id = anyDao.insert(anyEntity);
         anyDao.selectById(id);
         List<AnyEntity> anyEntities = anyDao.selectAll();

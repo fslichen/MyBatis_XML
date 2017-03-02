@@ -4,10 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<!-- Map evolution.entity.AnyEntity as AnyEntity and use it as alias. -->
 	<typeAliases>
 		<typeAlias alias="AnyEntity" type="evolution.entity.AnyEntity" />
 	</typeAliases>
-
+	<!-- You are allowed to set the profiles for DB connection. -->
+	<!-- In this case, you set the development profile as the default profile.  -->
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
@@ -19,8 +21,17 @@
 				<property name="password" value="root" />
 			</dataSource>
 		</environment>
+		<environment id="production">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<!-- Create a database named test. -->
+				<property name="url" value="jdbc:mysql://localhost:3306/production" />
+				<property name="username" value="root" />
+				<property name="password" value="root" />
+			</dataSource>
+		</environment>
 	</environments>
-
 	<mappers>
 		<mapper resource="anyEntity.xml" />
 	</mappers>

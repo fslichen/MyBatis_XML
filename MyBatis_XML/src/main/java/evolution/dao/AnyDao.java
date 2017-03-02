@@ -22,7 +22,7 @@ public class AnyDao {
 		} finally {// Finally is used for closing the resources.
 			session.close();
 		}
-		System.out.println("selectAll() --> " + anyEntities);
+		System.out.println("Select all and get " + anyEntities + ".");
 		return anyEntities;
 	}
 
@@ -34,7 +34,7 @@ public class AnyDao {
 		} finally {
 			session.close();
 		}
-		System.out.println("selectById(" + id + ") --> " + anyEntity);
+		System.out.println("Select by ID " + id + " and get " + anyEntity + ".");
 		return anyEntity;
 	} 
 
@@ -47,20 +47,19 @@ public class AnyDao {
 			session.commit();
 			session.close();
 		}
-		System.out.println("insert(" + anyEntity + ") --> " + anyEntity.getId());
+		System.out.println("Insert " + anyEntity + ".");
 		return id;
 	}
 
 	public void update(AnyEntity anyEntity) {
 		SqlSession session = sqlSessionFactory.openSession();
-		int id = 0;
 		try {
-			id = session.update("anyNameSpace.update", anyEntity);
+			session.update("anyNameSpace.update", anyEntity);
 		} finally {
 			session.commit();
 			session.close();
 		}
-		System.out.println("update(" + anyEntity + " " + id + ") --> updated");
+		System.out.println("Update " + anyEntity + " with ID equals " + anyEntity.getId() + ".");
 	}
 
 	public void delete(int id) {
@@ -71,6 +70,6 @@ public class AnyDao {
 			session.commit();
 			session.close();
 		}
-		System.out.println("delete(" + id + ")");
+		System.out.println("Delete anyEntity with ID equals " + id + ".");
 	}
 }
