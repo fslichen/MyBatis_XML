@@ -18,20 +18,19 @@ public class AnyDao {
 		List<AnyEntity> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		try {// A try block can be followed by finally. 
-			list = session.selectList("AnyEntity.selectAll");// Refer to <mapper namespace="AnyEntity"> in AnyEntity.xml
+			list = session.selectList("anyNameSpace.selectAll");// Refer to <mapper namespace="anyNameSpace"> in AnyEntity.xml
 		} finally {
 			session.close();
 		}
 		System.out.println("selectAll() --> " + list);
 		return list;
-
 	}
 
 	public AnyEntity selectById(int id) {
 		AnyEntity anyEntity = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			anyEntity = session.selectOne("AnyEntity.selectById", id);
+			anyEntity = session.selectOne("anyNameSpace.selectById", id);
 		} finally {
 			session.close();
 		}
@@ -43,7 +42,7 @@ public class AnyDao {
 		int id = -1;
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			id = session.insert("AnyEntity.insert", anyEntity);
+			id = session.insert("anyNameSpace.insert", anyEntity);
 		} finally {
 			session.commit();
 			session.close();
@@ -56,7 +55,7 @@ public class AnyDao {
 		SqlSession session = sqlSessionFactory.openSession();
 		int id = 0;
 		try {
-			id = session.update("AnyEntity.update", anyEntity);
+			id = session.update("anyNameSpace.update", anyEntity);
 		} finally {
 			session.commit();
 			session.close();
@@ -67,7 +66,7 @@ public class AnyDao {
 	public void delete(int id) {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			session.delete("AnyEntity.delete", id);
+			session.delete("anyNameSpace.delete", id);
 		} finally {
 			session.commit();
 			session.close();
